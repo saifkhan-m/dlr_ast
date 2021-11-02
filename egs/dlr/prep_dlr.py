@@ -12,8 +12,11 @@ import zipfile
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 import pandas as pd
-
 TYPE='red15'
+TYPE='red10'
+seconds=10
+TYPE='red5'
+seconds=5
 def create_16k(base_dir, meta):
     for index, file in meta.iterrows():
         audio = file['filename']
@@ -33,7 +36,7 @@ base_dir= "/home/projects/SocialMediaAnalysis/audioDLR"
 meta = pd.read_csv('data/dlr_data_folder_meta_'+TYPE+'.csv' )
 #base_path_16k = "/home/projects/SocialMediaAnalysis/audioDLR/final_data16k"
 base_path_16k = "/home/projects/SocialMediaAnalysis/audioDLR/reduced_Data"
-base_path_16k = "/home/projects/SocialMediaAnalysis/audioDLR/reduced_Data15"
+base_path_16k = f"/home/projects/SocialMediaAnalysis/audioDLR/reduced_Data{seconds}"
 #create_16k(base_dir, meta)
 
 X = meta.loc[:, 'folder':'filename']

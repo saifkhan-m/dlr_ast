@@ -13,8 +13,10 @@ import dataloader
 from tqdm import tqdm
 #TYPE='red'
 #target_dlr=3072
-TYPE='red15'
-target_dlr= 1536
+TYPE='red10'
+target_dlr= 1024
+TYPE='red5'
+target_dlr= 512
 audio_conf = {'num_mel_bins': 128, 'target_length': target_dlr, 'freqm': 24, 'timem': 192, 'mixup': 0.0,'get_norm_stats':True,'mode':'train', 'dataset':'dlr' }
 
 train_loader = torch.utils.data.DataLoader(
@@ -36,6 +38,7 @@ for i, (audio_input, labels) in tqdm(enumerate(train_loader)):
     std.append(cur_std)
     #print(cur_mean, cur_std)
     #print(i)
+print(f'Norm stat for TYPE: {TYPE} and target length: {target_dlr}')
 print('mean',np.mean(mean))
 print('STD', np.mean(std))
 print('Norm Stats Done')

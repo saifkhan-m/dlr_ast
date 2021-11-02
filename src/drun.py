@@ -53,6 +53,8 @@ dateTimeObj = datetime.now()
 timestampStr = dateTimeObj.strftime("%d%b%H%M")
 ##change
 TYPE='red'
+TYPE='red10'
+TYPE='red5'
 args.n_class=4
 te_data='../egs/dlr/data/datafiles/dlr_eval_data_'+TYPE+'.json'
 tr_data='../egs/dlr/data/datafiles/dlr_train_data_'+TYPE+'.json'
@@ -71,11 +73,11 @@ else:
 args.freqm=24
 args.timem=96
 args.mixup=0
-args.n_epochs=10
+args.n_epochs=5
 args.batch_size = 4
 args.fstride=10
 args.tstride=10
-base_exp_dir = f'../egs/dlr/exp/test-{args.dataset}-b{args.batch_size}-e{args.n_epochs}-e{TYPE}-{timestampStr}'
+base_exp_dir = f'../egs/dlr/exp/test-{args.dataset}-b{args.batch_size}-e{args.n_epochs}-e-{TYPE}_gpu002'
 args.save_model =True
 args.exp_dir= base_exp_dir+'fold'
 args.data_val = te_data
@@ -83,10 +85,16 @@ args.data_train = tr_data
 
 ##change
 #normstats=[-6.333891, 5.114872] #all
-normstats=[-5.4024234, 4.9392357] #red
+normstats=[-5.4024234, 4.9392357] #red 30
 target_dlr=3072
 #normstats=[-6.0310507, 4.9392357] #red15
 #target_dlr= 1536
+
+normstats=[-6.1154747, 4.8412547] #red10
+target_dlr=1024
+
+normstats=[-5.791638, 4.923067] #red5
+target_dlr=512
 
 # transformer based model
 if args.model == 'ast':

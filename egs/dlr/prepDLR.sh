@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --output=out_%j.txt
+#SBATCH --output=out/outout_%j.txt
 #SBATCH --gres=gpu:4              # Anzahl GPUs (pro node)
 #SBATCH --mail-user=mohd.khan@dlr.de
 #SBATCH --mail-type=END,FAIL

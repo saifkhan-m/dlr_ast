@@ -6,7 +6,10 @@ from util import get_heirarchy_of_categories
 
 #TYPE='all'
 TYPE='red15'
-
+TYPE= 'red10'
+seconds=10
+TYPE= 'red5'
+seconds=5
 def create_filenamecsv(data_folder):
     class_folders = [x[0].split('/')[-1] for x in os.walk(data_folder)][1:]
     for_csv = []
@@ -70,7 +73,7 @@ def create_class_labelcsv(data_folder):
         csvWriter.writerows(for_csv)
 
 
-data_fol = '/home/projects/SocialMediaAnalysis/audioDLR/reduced_Data15'
+data_fol = f'/home/projects/SocialMediaAnalysis/audioDLR/reduced_Data{seconds}'
 create_class_labelcsv(data_fol)
 create_filenamecsv(data_fol)
 

@@ -8,7 +8,7 @@ from utilities import *
 # This file will create chunks based on the value of seconds variable. It will create chunks of the given value
 home_folder= '/home/projects/SocialMediaAnalysis/audioDLR/final_data16k_copy'
 
-seconds=15
+seconds=5
 dest_folder= '/home/projects/SocialMediaAnalysis/audioDLR/final_data16k'+str(seconds)+'chunks'
 subfolders = [ f.path for f in os.scandir(home_folder) if f.is_dir() ]
 

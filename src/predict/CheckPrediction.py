@@ -2,6 +2,7 @@ from Model_prediction import Model_prediction
 import sys
 #sys.path.append("../src")
 from src.utilities.util import get_args
+
 import json
 predict_file='/home/khan_mo/thesis/important Git Lib/ast/egs/dlr/data/dlrdata/audio16k/Flugzeug/8_split_23588_Flugzeug.wav'
 model_path = '/home/khan_mo/thesis/important Git Lib/ast/egs/dlr/exp/test-dlr-b4-e10-ered-30Sep0027fold/models/audio_model.10.pth'
