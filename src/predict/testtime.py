@@ -32,6 +32,49 @@ def do_windowing( predicted_events):
         predicted_events[it][5] = cls_labels[int(window_predictions[it])]
     return predicted_events
 
-with open("predictCSV/pred_133-0020_201031_231556_indoors-tagSeconds-30_events.csv", "r") as my_csv:
-    csv_reader = list(csv.reader(my_csv, delimiter=','))
-    do_windowing(csv_reader[1:])
+def test_window():
+    with open("predictCSV/pred_133-0020_201031_231556_indoors-tagSeconds-30_events.csv", "r") as my_csv:
+        csv_reader = list(csv.reader(my_csv, delimiter=','))
+        do_windowing(csv_reader[1:])
+
+
+def get_actual_audio_time( time):
+    #time in seconds to actual and audio time
+    FMT = '%H:%M:%S'
+    actual_time= None
+    audio_time=str(datetime.strptime(str(time), FMT).time())
+    return actual_time, audio_time
+def get_duration():
+    time=timedelta(seconds=5)
+    timeend = timedelta(seconds=150000)
+    FMT = '%H:%M:%S'
+    actual_start, audio_start = get_actual_audio_time(time)
+    actual_end, audio_end = get_actual_audio_time(timeend)
+    duration = datetime.strptime(audio_end, FMT)- datetime.strptime(audio_start, FMT)
+    print(str(duration))
+
+import itertools as it
+
+
+def find_ranges(lst,n=1):
+    """Return ranges for `n` or more repeated values.
+    https://stackoverflow.com/questions/44790869/find-indexes-of-repeated-elements-in-an-array-python-numpy
+    """
+    groups = ((k, tuple(g)) for k, g in it.groupby(enumerate(lst), lambda x: x[-1]))
+    repeated = (idx_g for k, idx_g in groups if len(idx_g) >=n)
+    return [[sub[0][0], sub[-1][0]] for sub in repeated]
+
+lst = [34,2,3,22,22,22,22,22,22,18,90,5,-55,-19,22,6,6,6,6,6,6,6,6,23,53,1,5,-42,82]
+
+#print(list(find_ranges(lst, 1)))
+def frequency():
+    
+    from collections import Counter
+    
+    # initializing list
+    test_list = [9, 4, 5]
+    # using most_common to
+    # get most frequent element
+    test_list = Counter(test_list)
+    res = test_list.most_common(1)[0][0]
+    print(res)

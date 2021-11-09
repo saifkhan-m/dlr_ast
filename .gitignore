@@ -1,11 +1,12 @@
 *.pth
-*txt
+*.txt
 *.csv
 *.wav
 *.zip
 *.pyc
 *.DS_Store
 *.json
+*.ipynb_checkpoints*
 pretrained_models/*
 pretrained_models/ensemble/*
 pretrained_models/load_pretrained_model_internal.py

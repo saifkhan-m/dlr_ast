@@ -323,15 +323,29 @@ RNNConfig = namedtuple(
   'RNNConfig',
   ['input_size', 'hidden_size', 'num_layers', 'dropout', 'residual'])
 
+def get_Normstats(targ_seconds):
+    if targ_seconds==30:
+        return [-5.4024234, 4.9392357], 3072#30
+    elif targ_seconds==15:
+        return [-6.0310507, 4.9392357], 1580 #red15
+    elif targ_seconds==10:
+        return [-6.1154747, 4.8412547],1024  # red10
+    elif targ_seconds==5:
+        return [-5.791638, 4.923067], 512
+    else:
+        return None
 
-def get_args():
+def get_args(targ_seconds):
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     args = parser.parse_args()
+
+    norm_stats, args.dlr_target =  get_Normstats(targ_seconds)
+    args.norm_mean = norm_stats[0]
+    args.norm_std=  norm_stats[1]
     te_data = '../egs/dlr/data/datafiles/dlr_eval_data_all.json'
     tr_data = '../egs/dlr/data/datafiles/dlr_train_data_all.json'
     args.n_class = 4
     args.label_csv = '../egs/dlr/data/dlr_class_label_all.csv'
-    norm_stats = [-5.4024234, 4.9392357]
 
     args.model = 'ast'
     args.dataset = 'dlr'
@@ -355,7 +369,5 @@ def get_args():
     #args.exp_dir = base_exp_dir + 'fold'
     args.data_val = te_data
     args.data_train = tr_data
-    args.dlr_target = 3072
-    args.norm_mean = norm_stats[0]
-    args.norm_std=  norm_stats[1]
+
     return args

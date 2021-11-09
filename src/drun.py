@@ -88,7 +88,7 @@ args.data_train = tr_data
 normstats=[-5.4024234, 4.9392357] #red 30
 target_dlr=3072
 #normstats=[-6.0310507, 4.9392357] #red15
-#target_dlr= 1536
+#target_dlr= 1580
 
 normstats=[-6.1154747, 4.8412547] #red10
 target_dlr=1024
