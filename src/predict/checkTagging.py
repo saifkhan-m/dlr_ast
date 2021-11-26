@@ -16,12 +16,16 @@ def get_audio_event(dataset, where='/home/projects/SocialMediaAnalysis/audioDLR/
         audio_file = where + '087-0291_160805_231502_indoors.wav'
         event_file = where + 'VP087-0291_160805_single_Events_results.txt'
         return audio_file, event_file
+    elif dataset== "test":
+        audio_file = where + '133-0130_211028_232820_indoors.wav'
+        event_file = where + '133-0130_211028_single_Events_results_FluiD.txt'
+        return audio_file, event_file
     else :
         return None
-overlap_flag=True
-datasets = ['new','veu']
+overlap_flag=False
+datasets = ['test']
 for dataset in datasets:
-    if dataset=='new':
+    if dataset=='new' or dataset=='test':
         column_num = 11#11 #36
     if dataset=='veu':
         column_num = 36#11 #36
